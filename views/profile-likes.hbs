@@ -1,0 +1,167 @@
+<div class="contour">
+    <img src="/Images/default.jpg" alt="default" class="profile-picture2">
+    <div class="profile-name">{{profileDetails.firstname}} {{profileDetails.lastname}}</div>
+    <div class="profile-username">@{{profileDetails.username}}</div>
+    <p id="profile-userID" hidden>{{profileDetails._id}}</p>
+    {{#if profileDetails.isNotOwnAccount}}
+        {{#if profileDetails.isFollowing}}
+            <button id="follow-unfollow" type="button" class="btn btn-outline-info btn-md">Unfollow</button> <br>
+        {{else}}
+            <button id="follow-unfollow" type="button" class="btn btn-outline-info btn-md">Follow</button> <br>
+        {{/if}}
+    {{else}}
+        <p><a href="/settings/account" target="_self" style = "text-decoration: none;"><i class="fas fa-pencil-alt"></i>  Edit Profile</a></p>
+    {{/if}}
+    <br>
+    <div class="profile-detail">
+        <i class="material-icons">groups</i><a href="/profile/{{profileDetails.username}}/following" style="text-decoration: none; color: gray">Following<p id="numFollowing">{{profileDetails.following}}</p></a>
+        <i class="material-icons">groups</i><a href="/profile/{{profileDetails.username}}/followers" style="text-decoration: none; color: gray">Followers<p id="numFollowers">{{profileDetails.followers}}</p></a>
+        
+    </div>
+    <div class="profile-bio">{{profileDetails.bio}}</div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-6 col-lg-9 col-sm-12">
+            <p id="loggedin-userID" hidden>{{loggedinUser.userID}}</p>
+            <div id = "main-panel" class = "overflow-auto">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                        Likes
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile/{{profileDetails.username}}">Posts</a></li>
+                        <li><a class="dropdown-item" href="/profile/{{profileDetails.username}}/comments">Comments</a></li>
+                    </ul> 
+                </div>
+                <hr>
+                {{#if result3}}
+                    {{#each result3}}
+                        <div class="post-main">
+                            <div class="thumbnail-post">
+                                <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                                <div class="post">
+                                <div id="controls{{_id}}" class="nameAndControls">
+                                    <h5><a href="/profile/{{author.username}}" class = "link-color" target = "_self" style="text-decoration: none">@{{author.username}}</a></h5>
+                                    {{#if isAuthor}}
+                                        <button type="button" class="btn button-style" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(131, 131, 131);">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <li><a class="dropdown-item editPost" data-bs-toggle="modal" data-bs-target="#editModal{{_id}}">Edit Post</a></li>
+                                            <li><a class="dropdown-item deletePost">Delete Post</a></li>
+                                        </ul>
+                                    {{/if}}                                    
+                                </div>
+                                    
+                                <h6 class="gray">{{date}}</h6>
+                                
+                                <div onclick="location.href='/view/post/{{_id}}';" style="cursor: pointer;">
+                                    <p id="{{_id}}">{{post}}</p>
+                                </div>
+                                </div>
+                             
+                            </div>
+                            <div class="btn-group post-controls" role="group" aria-label="Basic outlined example">
+                                {{#if isLiked}}
+                                    <button id="like{{_id}}" type="button" class="btn far fa-heart" style="color: red">{{likes}}</button>
+                                {{else}}
+                                    <button id="like{{_id}}" type="button" class="btn far fa-heart" style="color: rgb(131, 131, 131)">{{likes}}</button>
+                                {{/if}}
+                                <button class="btn button-style" type="button" data-bs-toggle="collapse" data-bs-target="#C{{_id}}" aria-expanded="false" aria-controls="C{{_id}}"><i class="fas fa-comments"></i>Comments</button>
+                            </div>
+                        </div>
+                        {{!-- Edit Post Modal --}}
+                        <div class="modal fade" id="editModal{{_id}}" tabindex="-1" aria-labelledby="editModal{{_id}}Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Post</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div id="edit{{_id}}" class="modal-body">
+                                        <div class="post-form">
+                                            <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Reply here!" style="resize: none;">{{post}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary editPost">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div class="collapse" id="C{{_id}}">
+                            <div class="card card-body">
+                                {{#if comments}}
+                                    {{#each comments}}
+                                        <div class="thumbnail-post">
+                                            <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                                            <div class="post">
+                                                <div id="controls{{_id}}" class="nameAndControls">
+                                                    <h5><a href="/profile/{{author.username}}" class = "link-color" target = "_self" style="text-decoration: none">@{{author.username}}</a></h5>
+                                                    {{#if isAuthor}}
+                                                        <button type="button" class="btn button-style" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(131, 131, 131);">
+                                                            <i class="fas fa-ellipsis-h"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <li><a class="dropdown-item editComment" data-bs-toggle="modal" data-bs-target="#editModal{{_id}}">Edit Comment</a></li>
+                                                            <li><a class="dropdown-item deleteComment">Delete Comment</a></li>
+                                                        </ul>
+                                                    {{/if}}
+                                                </div>
+
+                                                <h6 class="gray">{{date}}</h6>
+                                                <div onclick="location.href='/view/comment/{{_id}}';" style="cursor: pointer;">
+                                                    <p id="{{_id}}">{{comment}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{!-- Edit Comment modal --}}
+                                        <div class="modal fade" id="editModal{{_id}}" tabindex="-1" aria-labelledby="editModal{{_id}}Label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Comment</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div id="edit{{_id}}" class="modal-body">
+                                                        <div class="post-form">
+                                                            <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Reply here!" style="resize: none;">{{comment}}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary editComment">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>       
+
+                                    {{/each}}
+                                        
+                                {{else}}
+                                    <p class="nocomment{{_id}}" style="margin-left: auto; margin-right: auto; color: rgb(131, 131, 131)">No comments to show!</p>
+                                {{/if}}
+                                <div id="comment{{_id}}" class="post-form">
+                                    <textarea name="commentBox" class="form-control textarea-margin"  rows="2" placeholder="Comment something!" style="resize: none;"></textarea>
+                                    <button type="button" class="btn btn-primary btn-sm submit-comment">Post</button>
+                                </div>                                        
+                            </div>
+                        </div>
+                    <hr>
+                    {{/each}}
+                {{else}}
+                    
+                    <p style="margin-left: auto; margin-right: auto; color: rgb(131, 131, 131)">No posts liked yet!</p>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+
+
+</div>  

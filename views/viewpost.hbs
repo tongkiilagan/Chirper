@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-xxl-6 col-xl-6 col-lg-9 col-sm-12">
+            <p id="loggedin-userID" hidden>{{loggedinUser._id}}</p>
+            <div id = "main-panel" class = "overflow-auto">
+                <div class="back">
+                    {{!-- back button --}}
+                    <a onclick="goBack()" target = "_self" class="btn" type="submit"><i class="material-icons">arrow_back</i> </a>
+                </div>
+                <hr>
+                <div class="post-main">
+                    <div class="thumbnail-post">
+                        <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                        <div class="post">
+                            <div id="controls{{postDetails._id}}"class="nameAndControls">
+                                <h5><a href="/profile/{{postDetails.author}}" class = "link-color" target = "_self" style="text-decoration: none">@{{postDetails.author}}</a></h5>
+                                {{#if postDetails.isAuthor}}
+                                    <button type="button" class="btn button-style" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(131, 131, 131);">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item editPost" data-bs-toggle="modal" data-bs-target="#editModal{{postDetails._id}}">Edit Post</a></li>
+                                        <li><a class="dropdown-item deletePost">Delete Post</a></li>
+                                    </ul>         
+                                {{/if}}                                
+                            </div>
+                            
+                            <h6 class="gray">{{postDetails.date}}</h6>
+                            <p id="{{postDetails._id}}">{{postDetails.post}}</p>
+
+                        </div>
+
+                    </div>
+                    <a href="/view/post/{{postDetails._id}}/likes" style="color: gray;"><p>Likes: {{postDetails.likes}}</p></a>
+                    <hr>
+                    <div class="btn-group post-controls" role="group" aria-label="Basic outlined example">
+                        {{#if postDetails.isLiked}}
+                            <button id="like{{postDetails._id}}" type="button" class="btn far fa-heart" style="color: red">{{postDetails.likes}}</button>
+                        {{else}}
+                            <button id="like{{postDetails._id}}" type="button" class="btn far fa-heart" style="color: rgb(131, 131, 131)">{{postDetails.likes}}</button>
+                        {{/if}}
+                        <button class="btn button-style" type="button" data-bs-toggle="collapse" data-bs-target="#C{{postDetails._id}}" aria-expanded="true" aria-controls="C{{postDetails._id}}"><i class="fas fa-comments"></i> Comments</button>
+                    </div>
+                </div>
+                <div class="collapse show" id="C{{postDetails._id}}">
+                    <div class="card card-body">
+                        
+                        {{#if postDetails.comments}}
+                            {{#each postDetails.comments}}
+                                {{> comment}}
+                            {{/each}}
+                        {{else}}
+                            <p class="nocomment{{postDetails._id}}" style="margin-left: auto; margin-right: auto; color: rgb(131, 131, 131)">No comments to show!</p>
+                        {{/if}}
+                        <div id="comment{{postDetails._id}}" class="post-form">
+                            <textarea name="commentBox" class="form-control textarea-margin"  rows="2" placeholder="Comment something!" style="resize: none;"></textarea>
+                            <button type="button" class="btn btn-primary btn-sm submit-comment">Post</button>
+                        </div>        
+                    </div>
+                </div>
+
+                <div class="modal fade" id="editModal{{postDetails._id}}" tabindex="-1" aria-labelledby="editModal{{postDetails._id}}Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div id="edit{{postDetails._id}}" class="modal-body">
+                                <div class="post-form">
+                                    <img src="/Images/default.jpg" alt="default" style="border-radius: 50%;" width="60px" height = "60px">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Reply here!" style="resize: none;">{{postDetails.post}}</textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary editPost">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.location=document.referrer;
+    }
+</script>
