@@ -1,0 +1,20 @@
+<div id = "main">
+    <div id = "login-form">
+        <h1>Login to Chirper</h1>
+        <div class = "login-form">
+            {{#if error}}
+                <div id="login-error">
+                    <center><p>Username and/or password combination cannot be found.</p></center>
+                </div>
+            {{/if}}
+            <br>
+            <form method="post">
+                <input type="text" name="loginusername" id="loginusername" placeholder="Username"> <br>
+                <input type="password" name="loginpassword" id="loginpassword" placeholder="Password"> <br>
+                <input type="submit" name="submit-login" id="submit-login">
+            </form>
+            <br>
+            <a href="/signup" target = "_self" style="color:rgb(96, 230, 230); text-decoration: none;"> No account? Sign up!</a><br>
+        </div>
+    </div>
+</div>

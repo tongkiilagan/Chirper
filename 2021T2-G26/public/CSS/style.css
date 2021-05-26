@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+body
+{
+    font-family: 'Comfortaa', cursive;
+    height: 100%;
+    margin: 0;
+    background-color: rgb(240, 240, 240) !important;
+}
+#error-page
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 42px !important;
+    font-weight:600 !important;
+    color: black;
+}
+#login-error
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(221, 103, 103);
+    border-color: rgb(204, 54, 54);
+    border-radius: 3px;
+    width: 380px;
+}
+.contour
+{
+    margin: auto;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+.profile-name
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.profile-picture2
+{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.profile-username
+{
+    color: rgb(38, 107, 255);
+    margin-bottom: 20px;
+}
+
+.profile-detail
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.red
+{
+    color: red;
+}
+.link-color
+{
+    color: rgb(96, 230, 230) !important;
+}
+.textarea-margin
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.settings-button-style
+{
+    font-size: 18px !important;
+    font-weight:600 !important;
+
+    text-align: left !important;
+}
+.button-selected
+{
+    background-color: rgb(240, 240, 240);
+}
+.button-style
+{
+    font-size: 16px !important;
+    font-weight:600 !important;
+    color: rgb(131, 131, 131) !important;
+}
+.btn:hover
+{
+    background-color: rgb(240, 240, 240);
+    color: white;
+}
+#right-panel
+{
+    background-color: white;
+    border-radius: 5px;
+
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#main-panel
+{
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 20px;
+    margin-bottom:30px;
+    border-radius: 5px;
+    background-color: white;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.nameAndControls
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#side-panel
+{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: white;
+    
+
+}
+.post-controls
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+
+}
+.post-form
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+textarea
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.gray
+{
+    color: gray;
+}
+.spacer
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.post-main
+{
+    display: flex;
+    flex-direction: column;
+}
+.right-panel-unit
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.post
+{
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 10px;
+}
+.thumbnail-post
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+#bio
+{
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+#account-names
+{
+    text-align: center;
+}
+h3 + h5
+{
+    font-weight: normal;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+.profile-picture
+{
+    border-radius: 50%;
+    border: 1px solid rgb(0,0,0);
+    padding: 5px;
+}
+#side-panel-header
+{
+    display: flex;
+    flex-direction: column;
+
+    font-size: 15px;
+    border-style: 3px solid rgb(214, 214, 214);
+}
+#main
+{
+    
+    display: flex;
+    justify-content: center;
+    
+    height: 100%;
+
+}
+.thumbnail-post-reply
+{
+    display: flex;
+    flex-direction: column;
+}
+#panel
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 500px;
+    width: 400px;
+    
+}
+#login-form
+{
+    display: flex;
+    flex-direction: column;
+    
+    padding-left: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 860px;
+    width: 400px;
+}
+.btn1:hover{
+    background-color: rgb(96, 230, 230);
+    color: #fff;
+}
+
+.btn1
+{
+    background-color: #fff;
+    border: 1px solid rgb(96, 230, 230);
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    
+    color: rgb(96, 230, 230);
+    font-size: 18px;
+}
+
+.btn2:hover{
+    background-color: rgb(96, 230, 230);
+    color: #fff;
+}
+
+.btn2
+{
+    background-color: #fff;
+    border: 1px solid rgb(96, 230, 230);
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+
+    color: rgb(96, 230, 230);
+    font-size: 18px;
+}
+.login-form
+{
+    display: flex;
+    flex-direction: column;
+}
+input[type=text], input[type=password], input[type=email]
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 350px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+input[type=submit]
+{
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+}
+
+.contour
+{
+    margin: auto;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-picture2
+{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.profile-username
+{
+    color: rgb(38, 107, 255);
+    margin-bottom: 20px;
+}
+
+.profile-detail
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.results
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.back
+{
+    display: flex;
+    align-items: center;
+}

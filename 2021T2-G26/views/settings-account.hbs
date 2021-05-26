@@ -1,0 +1,120 @@
+<div class="container">
+    <p id="settings-accountID" hidden>{{details._id}}</p>
+    {{!-- <input type="hidden" value="{{details._id}}" id='settings-accountID'> --}}
+    <div class="row align-items-start">
+
+        <div class="col-xxl-3 col-xl-3 col-lg-3 d-none d-sm-block">
+            <div id="side-panel" class = "overflow-auto">
+                <h4>Settings</h4>
+                <hr>
+                <div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
+                    <a type="button" class="btn settings-button-style button-selected" href="/settings/account">Account</a>
+                    <a type="button" class="btn settings-button-style" href="/settings/security">Security</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-9">
+            <div id = "main-panel" class = "overflow-auto">
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Change Username
+                                </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3 row">
+                                    <label for="staticUsername" class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input id="staticUsername" class="form-control-plaintext" type="text"  value="{{details.username}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="newUsername" class="col-sm-2 col-form-label">New Username</label>
+                                    <div class="col-sm-10">
+                                        <input id="newUsername" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <p id="editChangeUsername-isUserTaken"></p>
+                                <p id="editChangeUsername-success"></p>
+                                <button id="changeusername-save"type="button" class="btn btn-outline-info" style="color: rgb(96, 230, 230);">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Profile Information
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3 row">
+                                    <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputFirstName" value="{{details.firstname}}">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputLastName" value="{{details.lastname}}">
+                                    </div>
+                                </div>
+                                {{!-- <div class="mb-3 row">
+                                    <label for="inputBirthday" class="col-sm-2 col-form-label">Birthday</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" id="inputBirthday" name="inputBirthday">
+                                    </div>
+                                </div> --}}
+                                <div class="mb-3 row">
+                                    <label for="bio" class="col-sm-2 col-form-label">Bio</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="bio" rows="4" style="resize: none;">{{details.bio}}</textarea>
+                                        {{!-- <input type="textarea" id="bio" name="bio"> --}}
+                                    </div>
+                                </div>
+                                <p id="editProfileInformation-success"></p>                
+                                <button id="editProfileInformation-save"type="button" class="btn btn-outline-info" style="color: rgb(96, 230, 230);">Save Changes</button>
+                        
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Delete your Account
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="mb-3 row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputConfirmPassword">
+                                    </div>
+                                </div>
+                                <p id="isSamePassword"></p>
+                                <p id="isCorrectPassword"></p>
+                                <button id="deleteAccount-confirm"type="button" class="btn btn-outline-info" style="color: rgb(96, 230, 230);">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

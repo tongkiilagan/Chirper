@@ -1,0 +1,16 @@
+
+<div id="container">
+    <div class="back">
+        <a onclick="goBack()" target = "_self" class="btn" type="submit"><i class="material-icons">arrow_back</i> </a>
+        <h6>Go Home</h6>
+    </div>    
+    <div id="error-page">
+        <h3>{{title}}</h3>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.location.href = '/home';
+    }
+</script>
